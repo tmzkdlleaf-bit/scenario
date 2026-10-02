@@ -1,0 +1,67 @@
+{
+  "name": "casefile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CASE FILE — CoC 시나리오 집필 앱",
+  "author": "나비",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "www": "node scripts/prepare-www.mjs",
+    "android:setup": "node scripts/setup-android.mjs",
+    "desktop": "npm run www && electron .",
+    "desktop:build": "npm run www && electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/browser": "^8.0.5",
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/filesystem": "^8.1.4",
+    "@capacitor/share": "^8.0.3",
+    "@supabase/supabase-js": "^2.117.2",
+    "docx": "^9.8.1",
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.nabi.casefile",
+    "productName": "CASE FILE",
+    "copyright": "나비",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "electron/**",
+      "www/**",
+      "assets/desktop-icon.png",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/desktop-icon.png",
+      "artifactName": "CASE-FILE-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "CASE FILE",
+      "installerLanguages": [
+        "ko_KR"
+      ],
+      "language": "1042"
+    }
+  }
+}
