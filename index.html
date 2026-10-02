@@ -2760,7 +2760,7 @@ function loadFocusPrefs(){
   try{ const r=localStorage.getItem(FOCUS_PREF_KEY); if(r) return {...FOCUS_DEFAULTS,...JSON.parse(r)}; }catch(e){}
   return {...FOCUS_DEFAULTS};
 }
-const FOCUS_DEFAULTS={ nudgeSec:10, sound:false, volume:0.6, typewriter:false, dim:false, spell:true, goalType:"none", goalVal:0 };
+const FOCUS_DEFAULTS={ nudgeSec:10, sound:IS_APP, volume:0.6, typewriter:false, dim:false, spell:true, goalType:"none", goalVal:0 };
 function saveFocusPrefs(){
   try{ localStorage.setItem(FOCUS_PREF_KEY, JSON.stringify({
     nudgeSec:focus.nudgeSec, sound:focus.sound, volume:focus.volume, typewriter:focus.typewriter,
